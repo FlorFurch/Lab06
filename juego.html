@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&family=Zen+Loop:ital@0;1&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <title>Página personal de Florencia Furch</title>
+ 
+</head>
+
+<body>
+  <header id="ancla">
+    <div class="row">
+      <div class="col-6 col-s-12 logo">
+        <div class="marquee">
+          <ul class="animacion">
+            <li><span class="text">Florencia<br>Furch</span></li>
+          </ul>
+          <ul aria-hidden="true" class="animacion">
+            <li>
+              <span class="text">Florencia<br>Furch</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6 col-s-12 menu">
+        <div class="menu-ppal">
+          <ul>
+          <li class="li-nav home"><a href="index.html">Home</a></li>
+          <li class="li-nav"><a href="acercade.html">Acerca de</a></li>
+          <li class="li-nav"><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <ul>
+          <li class="li-nav destacado"><a class="active" href="juego.html">Juego</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  
+  <div id="sticky">Whatsapp: +54 9 291 4623111</div>
+      <main>
+  
+          <section  class="row">
+  
+            
+            <div class="columna-izquierda col-4 col-s-12">
+              <div class="encabezado ">
+                <h2>Juego de Adivinanza de Números</h2>
+                <p>Intentá adivinar el número entre 1 y 100. Tenés 5 intentos.</p>
+               </div>
+                    
+              </div>
+
+              <div class="columna-derecha col-8 col-s-12 input-juego">
+                <img src="imgs/juego.svg" class="img-juego" alt="imagen decorativa">
+                <input class="numero" type="number" id="inputAdivinanza" placeholder="Ingresá un número" min="1" max="100">
+  <div class="botones">
+    <button class="boton" onclick="adivinarNumero()">Adivinar</button>
+  <button class="boton" onclick="reiniciarJuego()">Reiniciar</button> </div>
+  
+  <div class="mensaje" id="mensaje"></div>
+              </div>
+
+
+  <script>
+    // Variables del juego
+    let numeroSecreto;
+    let intentos;
+    const maxIntentos = 5;
+
+    // Función para inicializar el juego
+    function iniciarJuego() {
+      numeroSecreto = Math.floor(Math.random() * 100) + 1; // Generar número secreto
+      intentos = 0; // Reiniciar contador de intentos
+      document.getElementById("mensaje").textContent = ""; // Limpiar mensaje
+      document.getElementById("inputAdivinanza").disabled = false; // Habilitar campo de entrada
+      document.querySelector("button[onclick='adivinarNumero()']").disabled = false; // Habilitar botón de adivinanza
+      document.getElementById("inputAdivinanza").value = ""; // Limpiar campo de entrada
+    }
+
+    // Función para manejar las adivinanzas
+    function adivinarNumero() {
+      const adivinanza = parseInt(document.getElementById("inputAdivinanza").value);
+      const mensajeElemento = document.getElementById("mensaje");
+
+      // Incrementar el número de intentos
+      intentos++;
+
+      // Verificar si el número es correcto
+      if (adivinanza === numeroSecreto) {
+        mensajeElemento.textContent = `¡Felicidades! Adivinaste el número en ${intentos} intentos.`;
+        deshabilitarJuego();
+      } else if (intentos >= maxIntentos) {
+        mensajeElemento.textContent = `Lo siento, has agotado tus intentos. El número era ${numeroSecreto}.`;
+        deshabilitarJuego();
+      } else if (adivinanza > numeroSecreto) {
+        mensajeElemento.textContent = `El número es más bajo. Intentos restantes: ${maxIntentos - intentos}.`;
+      } else if (adivinanza < numeroSecreto) {
+        mensajeElemento.textContent = `El número es más alto. Intentos restantes: ${maxIntentos - intentos}.`;
+      } else {
+        mensajeElemento.textContent = "Por favor, ingresa un número válido.";
+      }
+
+      // Limpiar el campo de entrada
+      document.getElementById("inputAdivinanza").value = "";
+    }
+
+    // Función para deshabilitar el juego cuando termine
+    function deshabilitarJuego() {
+      document.getElementById("inputAdivinanza").disabled = true;
+      document.querySelector("button[onclick='adivinarNumero()']").disabled = true;
+    }
+
+    // Función para reiniciar el juego
+    function reiniciarJuego() {
+      iniciarJuego(); // Llamar a iniciarJuego para reiniciar el estado
+    }
+
+    // Iniciar el juego al cargar la página
+    iniciarJuego();
+  </script>
+</section>
+</main>
+<div class="circulo"><a href="#ancla"> 
+  <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181.17 181.46"><defs><style>.cls-1{fill:#fff;}</style></defs><title>right-arrow</title><path class="cls-1" d="M45.52,99.71c-12.29,0-24.19.05-36.08,0-6.79,0-11.22-6.32-8.75-12.37a11.61,11.61,0,0,1,2.55-3.64Q43.37,43.47,83.56,3.33C88-1.08,93-1.11,97.42,3.26Q137.71,43.5,178,83.78c2.94,2.94,4.08,6.33,2.48,10.22-1.71,4.17-5.4,5.61-9.55,5.66-10.68.12-21.37,0-32.06,0h-3.32v3.53c0,46.12,0,21,0,67.11,0,7.86-3.23,11.11-11.05,11.11H56.14c-7.27,0-10.61-3.36-10.61-10.69,0-46.21,0-21.18,0-67.39Z"/></svg>
+</a>
+</div>
+    <footer>
+      <div class="logo-animado">
+        <img src="/imgs/logo-curza.png" alt="logo" class="imagen">
+      </div>
+        <p>Centro Regional Universitario Zona Atlántica<br>
+            Monseñor Esandi y Ayacucho. Viedma(85009), Río Negro, Argentina.<br>
+
+            Teléfonos: +54-2920-422921/423772</p>
+    </footer>
+</body>
+</html>
+
