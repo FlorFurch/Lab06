@@ -42,6 +42,7 @@
         </ul>
       </div>
     </div>
+    </div>
   </header>
   
   <div id="sticky">Whatsapp: +54 9 291 4623111</div>
@@ -70,30 +71,28 @@
 
 
   <script>
-    // Variables del juego
     let numeroSecreto;
     let intentos;
     const maxIntentos = 5;
 
-    // Función para inicializar el juego
+    
     function iniciarJuego() {
-      numeroSecreto = Math.floor(Math.random() * 100) + 1; // Generar número secreto
-      intentos = 0; // Reiniciar contador de intentos
-      document.getElementById("mensaje").textContent = ""; // Limpiar mensaje
-      document.getElementById("inputAdivinanza").disabled = false; // Habilitar campo de entrada
-      document.querySelector("button[onclick='adivinarNumero()']").disabled = false; // Habilitar botón de adivinanza
-      document.getElementById("inputAdivinanza").value = ""; // Limpiar campo de entrada
+      numeroSecreto = Math.floor(Math.random() * 100) + 1; 
+      intentos = 0; 
+      document.getElementById("mensaje").textContent = ""; 
+      document.getElementById("inputAdivinanza").disabled = false; 
+      document.querySelector("button[onclick='adivinarNumero()']").disabled = false; 
+      document.getElementById("inputAdivinanza").value = "";
     }
 
-    // Función para manejar las adivinanzas
+    
     function adivinarNumero() {
       const adivinanza = parseInt(document.getElementById("inputAdivinanza").value);
       const mensajeElemento = document.getElementById("mensaje");
-
-      // Incrementar el número de intentos
+      
       intentos++;
 
-      // Verificar si el número es correcto
+    
       if (adivinanza === numeroSecreto) {
         mensajeElemento.textContent = `¡Felicidades! Adivinaste el número en ${intentos} intentos.`;
         deshabilitarJuego();
@@ -108,22 +107,19 @@
         mensajeElemento.textContent = "Por favor, ingresa un número válido.";
       }
 
-      // Limpiar el campo de entrada
+
       document.getElementById("inputAdivinanza").value = "";
     }
 
-    // Función para deshabilitar el juego cuando termine
     function deshabilitarJuego() {
       document.getElementById("inputAdivinanza").disabled = true;
       document.querySelector("button[onclick='adivinarNumero()']").disabled = true;
     }
 
-    // Función para reiniciar el juego
     function reiniciarJuego() {
-      iniciarJuego(); // Llamar a iniciarJuego para reiniciar el estado
+      iniciarJuego(); 
     }
 
-    // Iniciar el juego al cargar la página
     iniciarJuego();
   </script>
 </section>
